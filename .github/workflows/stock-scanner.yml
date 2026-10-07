@@ -1,0 +1,24 @@
+name: 台股手機掃描
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 下載程式
+        uses: actions/checkout@v4
+
+      - name: 安裝 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: 安裝套件
+        run: |
+          pip install pandas requests openpyxl lxml
+
+      - name: 執行股票掃描
+        run: python stock_scanner_mobile.py
