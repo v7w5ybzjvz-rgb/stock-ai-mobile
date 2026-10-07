@@ -14,11 +14,10 @@ jobs:
       - name: 安裝 Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: "3.13"
 
       - name: 安裝套件
-        run: |
-          pip install pandas requests openpyxl lxml
+        run: pip install pandas requests openpyxl lxml
 
       - name: 執行股票掃描
         run: python stock_scanner_mobile.py
