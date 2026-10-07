@@ -21,7 +21,7 @@ jobs:
 
       - name: 執行股票掃描
         run: python stock_scanner_mobile.py
-              - name: 保存選股結果
+      - name: 保存選股結果
         uses: actions/upload-artifact@v4
         with:
           name: 今日選股結果
