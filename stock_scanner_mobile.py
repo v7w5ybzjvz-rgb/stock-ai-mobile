@@ -43,7 +43,13 @@ print("\n開始自動選股...")
 
 # 合併上市 + 上櫃
 all_stocks = pd.concat([twse, tpex], ignore_index=True)
+today = pd.Timestamp.now(tz="Asia/Taipei")
+today_roc = f"{today.year-1911:03d}{today.month:02d}{today.day:02d}"
+data_date = str(all_stocks["Date"].iloc[0])
 
+if data_date != today_roc:
+    print(f"資料日期是 {data_date}，今天是 {today_roc}，停止今日選股")
+    raise SystemExit(0)
 # 找出共同欄位：股票代號、名稱
 code_col = all_stocks.columns[1]
 name_col = all_stocks.columns[2]
